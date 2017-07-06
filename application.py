@@ -35,3 +35,21 @@ def index():
     
     return render_template("index.html")
 
+# landing page
+@app.route("/landing")
+def landing():
+    """ Direct site visitor to landing page. """
+    render_template("landing.html")
+    
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """ Log in the user. """
+    
+    # forget any logged in user
+    session.clear()
+    
+    # if user reached via POST
+    if request.method == "POST":
+        
+        # ensure credentials entered
+        if request.form.get("username")
