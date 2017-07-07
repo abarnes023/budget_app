@@ -39,7 +39,7 @@ def index():
 @app.route("/landing")
 def landing():
     """ Direct site visitor to landing page. """
-    render_template("landing.html")
+    return render_template("landing.html")
     
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -57,14 +57,14 @@ def login():
             redirect(url_for("login"))
         elif not request.form.get("password"):
             flash("Please enter a password.", "error")
-            redirect(url_for("login"))
+            return redirect(url_for("login"))
         
         # query database to check for user
         rows = db.execute("SELECT * FROM 'users' WHERE username = :username", username=request.form.get("username"))
         
         if len(rows) != 1 or not pwd_context.verify(request.form.get("password"), rows[0]["hash"]):
             flash("Username or password is incorrect.", "error")
-            redirect(url_for("login"))
+            return redirect(url_for("login"))
         
         # remember user if login valid
         session["user_id"] = rows[0]["id"]
@@ -75,4 +75,4 @@ def login():
         
     # if reached via GET
     else:
-        render_template("login.html")
+        return render_template("login.html")

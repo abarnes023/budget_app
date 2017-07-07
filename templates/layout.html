@@ -41,19 +41,19 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         {% if session.user_id %}
                             <ul class="nav navbar-nav">
-                                <li><a href="{{ url_for('about') }}">About Us</a></li>
-                                <li><a href="{{ url_for('budget') }}">Budget</a></li>
-                                <li><a href="{{ url_for('tips') }}">Financial Tips</a></li>
-                                <li><a href="{{ url_for('articles') }}">Recent Articles</a></li>
+                                <li><a href=#>About Us</a></li>
+                                <li><a href=#>Budget</a></li>
+                                <li><a href=#>Financial Tips</a></li>
+                                <li><a href=#>Recent Articles</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                                <li><a href=#>Logout</a></li>
                             </ul>
                         {% else %}
                             <ul class="nav navbar-nav navbar-right">
                                 <!-- http://glyphicons.com/ -->
-                                <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-lock"></span>Login</a></li>
-                                <li><a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-lock"></span>Sign Up</a></li>
+                                <li><a href=#><span class="glyphicon glyphicon-lock"></span>Login</a></li>
+                                <li><a href=#><span class="glyphicon glyphicon-lock"></span>Sign Up</a></li>
                             </ul>
                         {% endif %}
                     </div>
