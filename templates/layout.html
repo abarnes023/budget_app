@@ -31,7 +31,10 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ url_for('index') }}"><img src="https://media.glassdoor.com/sqll/541092/bw-shipping-pte-squarelogo.png" width="30" height="30"></a>
+                        <a class="navbar-brand" href="{{ url_for('index') }}">
+                            <img src="https://media.glassdoor.com/sqll/541092/bw-shipping-pte-squarelogo.png" width="30" height="30">
+                            BudgetWise
+                        </a>
                     </div>
                     
                     <!-- Navbar menu items -->
@@ -48,8 +51,8 @@
                             </ul>
                         {% else %}
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{ url_for('login') }}">Login</a></li>
                                 <!-- http://glyphicons.com/ -->
+                                <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-lock"></span>Login</a></li>
                                 <li><a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-lock"></span>Sign Up</a></li>
                             </ul>
                         {% endif %}
