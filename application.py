@@ -1,5 +1,5 @@
 from cs50 import SQL
-from flask import Flask, redirect, render_template, request, session, url_for
+from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
@@ -23,7 +23,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# configure CS50 Library to use SQLite database
+# configure to use SQLite database
 db = SQL("sqlite:///budget.db")
 
 # home page
@@ -52,4 +52,27 @@ def login():
     if request.method == "POST":
         
         # ensure credentials entered
-        if request.form.get("username")
+        if not request.form.get("username"):
+            flash("Please enter a username.", "error")
+            redirect(url_for("login"))
+        elif not request.form.get("password"):
+            flash("Please enter a password.", "error")
+            redirect(url_for("login"))
+        
+        # query database to check for user
+        rows = db.execute("SELECT * FROM 'users' WHERE username = :username", username=request.form.get("username"))
+        
+        if len(rows) != 1 or not pwd_context.verify(request.form.get("password"), rows[0]["hash"]):
+            flash("Username or password is incorrect.", "error")
+            redirect(url_for("login"))
+        
+        # remember user if login valid
+        session["user_id"] = rows[0]["id"]
+        
+        # redirect to home page
+        flash("You have successfully been logged in.", "message")
+        return redirect(url_for("index"))
+        
+    # if reached via GET
+    else:
+        render_template("login.html")
