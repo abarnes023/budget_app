@@ -63,7 +63,7 @@ def register():
         session["user_id"] = user_id
         
         # redirect to home page
-        flash("You have successfully been registered.", "message")
+        flash("You have successfully been registered.", "success")
         return redirect(url_for("index"))
         
     # if reached route via GET
@@ -100,7 +100,7 @@ def login():
         session["user_id"] = rows[0]["id"]
         
         # redirect to home page
-        flash("You have successfully been logged in.", "message")
+        flash("You have successfully been logged in.", "success")
         return redirect(url_for("index"))
         
     # if reached via GET
@@ -115,3 +115,14 @@ def index():
     # TODO
     
     return render_template("index.html")
+    
+@app.route("/logout")
+def logout():
+    """Log user out."""
+
+    # forget any user_id
+    session.clear()
+
+    # redirect user to login form
+    flash("You have successfully been logged out.", "success")
+    return redirect(url_for("login"))
