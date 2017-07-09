@@ -10,3 +10,14 @@
 {
     margin-top: 10%;
 }
+
+.transparent
+{
+    background: transparent;
+    border-color: transparent;
+}
+
+.white
+{
+    color: white;
+}

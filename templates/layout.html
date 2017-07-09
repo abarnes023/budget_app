@@ -21,8 +21,8 @@
         
         <div class="container-fluid bkg">
             
-            <nav class="navbar sticky-top navbar-inverse bg-inverse">
-                <div class="container-fluid">
+            <nav class="container">
+                <div class="navbar sticky-top transparent">
                     
                     <!-- Logo -->
                     <div class="navbar-header">
@@ -34,7 +34,7 @@
                         </button>
                         <a class="navbar-brand" href="{{ url_for('index') }}">
                             <span><img src="https://media.glassdoor.com/sqll/541092/bw-shipping-pte-squarelogo.png" width="30" height="30"/></span>
-                            BudgetWise
+                            <span class="white">BudgetWise</span>
                         </a>
                     </div>
                     
@@ -53,8 +53,8 @@
                         {% else %}
                             <ul class="nav navbar-nav navbar-right">
                                 <!-- http://glyphicons.com/ -->
-                                <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-lock"></span> Login</a></li>
-                                <li><a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-lock"></span> Sign Up</a></li>
+                                <li><a href="{{ url_for('login') }}" class="white"><span class="glyphicon glyphicon-lock"></span> Login</a></li>
+                                <li><a href="{{ url_for('register') }}" class="white"><span class="glyphicon glyphicon-lock"></span> Sign Up</a></li>
                             </ul>
                         {% endif %}
                     </div>
