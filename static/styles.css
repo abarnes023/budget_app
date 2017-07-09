@@ -1,4 +1,4 @@
-.container
+.bkg
 {
     /* center contents */
     margin-left: auto;
@@ -6,9 +6,7 @@
     text-align: center;
 }
 
-.catch
+.caption1
 {
     margin-top: 10%;
-    font-size: 4em;
-    font-family: Georgia, Times, serif;
 }
