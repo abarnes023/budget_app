@@ -111,10 +111,11 @@ def login():
 @app.route("/")
 @login_required
 def index():
+    ### Displays user homepage. """
     
-    # TODO
-    
-    return render_template("index.html")
+    user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
+    username = user[0]["username"]
+    return render_template("index.html", username=username)
     
 @app.route("/logout")
 def logout():
