@@ -117,6 +117,15 @@ def index():
     username = user[0]["username"]
     return render_template("index.html", username=username)
     
+@app.route("/about")
+@login_required
+def about():
+    ### Display the about us page. """
+    
+    user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
+    username = user[0]["username"]
+    return render_template("about.html", username=username)
+    
 @app.route("/logout")
 def logout():
     """Log user out."""

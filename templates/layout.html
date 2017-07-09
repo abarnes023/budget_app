@@ -39,21 +39,21 @@
                     </div>
                     
                     <!-- Navbar menu items -->
+                    <!-- http://glyphicons.com/ -->
                     <div class="collapse navbar-collapse" id="navbar">
                         {% if session.user_id %}
                             <ul class="nav navbar-nav">
-                                <li><a href=#>About Us</a></li>
+                                <li><a href="{{ url_for('about') }}">About Us</a></li>
                                 <li><a href=#>Budget</a></li>
                                 <li><a href=#>Financial Tips</a></li>
                                 <li><a href=#>Recent Articles</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="navbar-text">Hello, {{ username }}</li>
+                                <li class="navbar-text"><span class="glyphicon glyphicon-user"></span>Hello, {{ username }}</li>
                                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
                             </ul>
                         {% else %}
                             <ul class="nav navbar-nav navbar-right">
-                                <!-- http://glyphicons.com/ -->
                                 <li><a href="{{ url_for('login') }}" class="white"><span class="glyphicon glyphicon-lock"></span> Login</a></li>
                                 <li><a href="{{ url_for('register') }}" class="white"><span class="glyphicon glyphicon-lock"></span> Sign Up</a></li>
                             </ul>
