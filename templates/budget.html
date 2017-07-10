@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Budget
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('budget') }}" method="post">
+        <fieldset>
+            <h2>{{ username }}'s Budget</h2>
+            <!--<div class="form-group">
+                <input class="form-control" type="month" value="{{ month }}" id="month">
+            </div>-->
+        </fieldset>
+        <fieldset>
+            <div class="form-group row">
+                <label for="income" class="col-2 col-form-label">Income</label>
+                <div class="col-4">
+                    <input class="form-control" type="number" placeholder="Enter expected income" id="eincome">
+                </div>
+                <div class="col-4">
+                    <input class="form-control" type="number" placeholder="Enter actual income" id="aincome">
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="rent" class="col-2 col-form-label">Rent</label>
+                <div class="col-4">
+                    <input class="form-control" type="number" placeholder="Enter rent" id="rent">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="utilities" class="col-2 col-form-label">Utilities</label>
+                <div class="col-4">
+                    <input class="form-control" type="number" placeholder="Enter utilities" id="utilities">
+                </div>
+            </div>
+        </fieldset>
+        
+    </form>
+{% endblock %}
