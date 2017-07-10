@@ -126,6 +126,25 @@ def about():
     username = user[0]["username"]
     return render_template("about.html", username=username)
     
+@app.route("/budget", methods=["GET", "POST"])
+@login_required
+def budget():
+    ### Allows user to create budget. """
+    
+    user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
+    username = user[0]["username"]
+    
+    # if reached via POST
+    if request.method == "POST":
+        
+        # TODO
+    
+        return render_template("budget.html", username=username)
+    
+    # if reached via GET
+    else:
+        return render_template("budget.html", username=username)
+    
 @app.route("/logout")
 def logout():
     """Log user out."""
