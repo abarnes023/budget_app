@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-    <form action="{{ url_for('budget') }}" method="post">
+    <form action="{{ url_for('budget') }}" method="post" class="form-horizontal">
         <fieldset>
             <h2>{{ username }}'s Budget</h2>
             <!--<div class="form-group">
@@ -13,26 +13,51 @@
             </div>-->
         </fieldset>
         <fieldset>
-            <div class="form-group row">
-                <label for="income" class="col-2 col-form-label">Income</label>
-                <div class="col-4">
-                    <input class="form-control" type="number" placeholder="Enter expected income" id="eincome">
+            <div class="form-group">
+                <label for="eincome" class="control-label col-sm-2">Income</label>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" min="0" placeholder="Enter expected income" id="eincome">
                 </div>
-                <div class="col-4">
-                    <input class="form-control" type="number" placeholder="Enter actual income" id="aincome">
-                </div>
-            </div>
-            <br>
-            <div class="form-group row">
-                <label for="rent" class="col-2 col-form-label">Rent</label>
-                <div class="col-4">
-                    <input class="form-control" type="number" placeholder="Enter rent" id="rent">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" min="0" placeholder="Enter actual income" id="aincome">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="utilities" class="col-2 col-form-label">Utilities</label>
-                <div class="col-4">
-                    <input class="form-control" type="number" placeholder="Enter utilities" id="utilities">
+            
+            <div class="form-group">
+                <label for="erent" class="control-label col-sm-2">Rent</label>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" min="0" placeholder="Enter expected rent" id="erent">
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" min="0" placeholder="Enter actual rent" id="arent">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="eutilities" class="control-label col-sm-2">Utilities</label>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" min="0" placeholder="Enter expected utilities" id="eutilities">
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" min="0" placeholder="Enter actual utilities" id="autilities">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="food" class="control-label col-sm-2">Food/ Groceries</label>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" min="0" placeholder="Enter expected food" id="efood">
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" type="number" min="0" placeholder="Enter actual food" id="afood">
                 </div>
             </div>
         </fieldset>
