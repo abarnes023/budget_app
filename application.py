@@ -57,7 +57,7 @@ def register():
             return redirect(url_for("register"))
             
         # insert user into database
-        user_id = db.execute("INSERT INTO 'users' (username, hash) VALUES (:username, :hash)", username=request.form.get("username"), hash=pwd_context.encrypt(request.form.get("password")))
+        user_id = db.execute("INSERT INTO 'users' (username, hash) VALUES (:username, :hash)", username=request.form.get("username"), hash=pwd_context.hash(request.form.get("password")))
         
         # store user id
         session["user_id"] = user_id
