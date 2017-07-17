@@ -137,7 +137,21 @@ def budget():
     # if reached via POST
     if request.method == "POST":
         
-        # TODO
+        # get variables from form and set to 0 if None
+        e_income = if_none(request.form.get("e_income"))
+        a_income = if_none(request.form.get("a_income"))
+        e_rent = if_none(request.form.get("e_rent"))
+        a_rent = if_none(request.form.get("a_rent"))
+        e_util = if_none(request.form.get("e_util"))
+        a_util = if_none(request.form.get("a_util"))
+        e_food = if_none(request.form.get("e_food"))
+        a_food = if_none(request.form.get("a_food"))
+        e_ent = if_none(request.form.get("e_ent"))
+        a_ent = if_none(request.form.get("a_ent"))
+        e_save = if_none(request.form.get("e_save"))
+        a_save = if_none(request.form.get("a_save"))
+        
+        
     
         return render_template("budget.html", username=username)
     
@@ -155,3 +169,11 @@ def logout():
     # redirect user to login form
     flash("You have successfully been logged out.", "success")
     return redirect(url_for("login"))
+    
+# check if variable is None
+def if_none(v):
+    if not v:
+        v = 0
+        return v
+    else:
+        return v
