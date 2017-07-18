@@ -8,9 +8,9 @@
     <form action="{{ url_for('budget') }}" method="post" class="form-horizontal">
         <fieldset>
             <h2>{{ username }}'s Budget</h2>
-            <!--<div class="form-group">
-                <input class="form-control" type="month" value="{{ month }}" id="month">
-            </div>-->
+            <div class="form-group">
+                <input class="form-control" type="month" value="{{ currMonth }}" id="month_picker" name="month" required>
+            </div>
         </fieldset>
         <fieldset>
             <div class="form-group">

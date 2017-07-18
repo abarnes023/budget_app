@@ -3,6 +3,7 @@ from flask import Flask, flash, redirect, render_template, request, session, url
 from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
+from datetime import datetime
 from helpers import *
 
 # configure application
@@ -131,8 +132,11 @@ def about():
 def budget():
     ### Allows user to create budget. """
     
+    # get username and current month and year
     user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
     username = user[0]["username"]
+    
+    currMonth = datetime.now().strftime("%Y-%m")
     
     # if reached via POST
     if request.method == "POST":
@@ -153,11 +157,11 @@ def budget():
         
         
     
-        return render_template("budget.html", username=username)
+        return render_template("budget.html", username=username, currMonth=currMonth)
     
     # if reached via GET
     else:
-        return render_template("budget.html", username=username)
+        return render_template("budget.html", username=username, currMonth=currMonth)
     
 @app.route("/logout")
 def logout():
