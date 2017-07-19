@@ -9,7 +9,7 @@
         <fieldset>
             <h2>{{ username }}'s Budget</h2>
             <div class="form-group">
-                <input class="form-control" type="month" value="{{ currMonth }}" id="month_picker" name="month" required>
+                <input class="form-control" type="month" value="{{ currMonth }}" id="month_picker" name="month" on_change="month_change(month)" required>
             </div>
         </fieldset>
         <fieldset>

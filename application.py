@@ -224,3 +224,14 @@ def budget_data(month):
             a_save = None
             
     return {'e_income': e_income, 'a_income': a_income, 'e_rent': e_rent, 'a_rent': a_rent, 'e_util': e_util, 'a_util': a_util, 'e_food': e_food, 'a_food': a_food, 'e_ent': e_ent, 'a_ent': a_ent, 'e_save': e_save, 'a_save': a_save}
+
+def month_change(self,cr,uid,ids,month,context=None):
+    # get username
+    user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
+    username = user[0]["username"]
+    
+    # get month budget data and set currMonth
+    data = budget_data(month)
+    currMonth = month
+    
+    return render_template("budget.html", username=username, currMonth=currMonth, e_income=data['e_income'], a_income=data['a_income'], e_rent=data['e_rent'], a_rent=data['a_rent'], e_util=data['e_util'], a_util=data['a_util'], e_food=data['e_food'], a_food=data['a_food'], e_ent=data['e_ent'], a_ent=data['a_ent'], e_save=data['e_save'], a_save=data['a_save'])
