@@ -142,33 +142,33 @@ def budget():
         currMonth = request.form.get("month")
         
         # get variables from form and set to 0 if None
-        e_income = if_none(request.form.get("e_income"))
-        a_income = if_none(request.form.get("a_income"))
-        e_rent = if_none(request.form.get("e_rent"))
-        a_rent = if_none(request.form.get("a_rent"))
-        e_util = if_none(request.form.get("e_util"))
-        a_util = if_none(request.form.get("a_util"))
-        e_food = if_none(request.form.get("e_food"))
-        a_food = if_none(request.form.get("a_food"))
-        e_ent = if_none(request.form.get("e_ent"))
-        a_ent = if_none(request.form.get("a_ent"))
-        e_save = if_none(request.form.get("e_save"))
-        a_save = if_none(request.form.get("a_save"))
+        e_income = request.form.get("e_income")
+        a_income = request.form.get("a_income")
+        e_rent = request.form.get("e_rent")
+        a_rent = request.form.get("a_rent")
+        e_util = request.form.get("e_util")
+        a_util = request.form.get("a_util")
+        e_food = request.form.get("e_food")
+        a_food = request.form.get("a_food")
+        e_ent = request.form.get("e_ent")
+        a_ent = request.form.get("a_ent")
+        e_save = request.form.get("e_save")
+        a_save = request.form.get("a_save")
             
         # check database to see if data for selected month exists
-        data = db.execute("SELECT * FROM 'budgets' WHERE id = :id AND month = :month", id=session["user_id"], month=currMonth)
+        data = db.execute("SELECT * FROM 'budgets' WHERE user = :user AND month = :month", user=session["user_id"], month=currMonth)
         if len(data) > 0:
             # update values in database
             db.execute("""UPDATE 'budgets'
                         SET e_income = :e_income, a_income = :a_income, e_rent = :e_rent, a_rent = :a_rent, e_util = :e_util, a_util = :a_util, e_food = :e_food, a_food = :a_food, e_ent = :e_ent, a_ent = :a_ent, e_save = :e_save, a_save = :a_save
-                        WHERE id = :id AND month = :month""", e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save, id=session["user_id"], month=currMonth)
+                        WHERE user = :user AND month = :month""", e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save, user=session["user_id"], month=currMonth)
         else:
             # insert values into database
             db.execute("""INSERT INTO 'budgets'
-                        (id, month, e_income, a_income, e_rent, a_rent, e_util, a_util, e_food, a_food, e_ent, a_ent, e_save, a_save) VALUES (:id, :month, :e_income, :a_income, :e_rent, :a_rent, :e_util, :a_util, :e_food, :a_food, :e_ent, :a_ent, :e_save, :a_save)""",
-                        id=session["user_id"], month=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save)
+                        (user, month, e_income, a_income, e_rent, a_rent, e_util, a_util, e_food, a_food, e_ent, a_ent, e_save, a_save) VALUES (:user, :month, :e_income, :a_income, :e_rent, :a_rent, :e_util, :a_util, :e_food, :a_food, :e_ent, :a_ent, :e_save, :a_save)""",
+                        user=session["user_id"], month=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save)
             
-        return render_template("budget.html", username=username, currMonth=currMonth)
+        return render_template("budget.html", username=username, currMonth=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save)
     
     # if reached via GET
     else:
@@ -176,23 +176,38 @@ def budget():
         currMonth = datetime.now().strftime("%Y-%m")
         
         # check database to see if data for selected month exists
-        data = db.execute("SELECT * FROM 'budgets' WHERE id = :id AND month = :month", id=session["user_id"], month=currMonth)
+        data = db.execute("SELECT * FROM 'budgets' WHERE user = :user AND month = :month", user=session["user_id"], month=currMonth)
         if len(data) > 0:
             # pull values from database
-            e_income = 
-            a_income = 
-            e_rent = 
-            a_rent = 
-            e_util = 
-            a_util = 
-            e_food = 
-            a_food = 
-            e_ent = 
-            a_ent = 
-            e_save = 
-            a_save = 
+            e_income = data[0]["e_income"]
+            a_income = data[0]["a_income"]
+            e_rent = data[0]["e_rent"]
+            a_rent = data[0]["a_rent"]
+            e_util = data[0]["e_util"]
+            a_util = data[0]["a_util"]
+            e_food = data[0]["e_food"]
+            a_food = data[0]["a_food"]
+            e_ent = data[0]["e_ent"]
+            a_ent = data[0]["a_ent"]
+            e_save = data[0]["e_save"]
+            a_save = data[0]["a_save"]
+            
+        else:
+            # set variables to None
+            e_income = None
+            a_income = None
+            e_rent = None
+            a_rent = None
+            e_util = None
+            a_util = None
+            e_food = None
+            a_food = None
+            e_ent = None
+            a_ent = None
+            e_save = None
+            a_save = None
         
-        return render_template("budget.html", username=username, currMonth=currMonth)
+        return render_template("budget.html", username=username, currMonth=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save)
     
 @app.route("/logout")
 def logout():
@@ -204,11 +219,3 @@ def logout():
     # redirect user to login form
     flash("You have successfully been logged out.", "success")
     return redirect(url_for("login"))
-    
-# check if variable is None, set to 0 if it is
-def if_none(v):
-    if not v:
-        v = 0
-        return v
-    else:
-        return v
