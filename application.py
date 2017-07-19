@@ -141,7 +141,7 @@ def budget():
         # set selected month
         currMonth = request.form.get("month")
         
-        # get variables from form and set to 0 if None
+        # get variables from form
         e_income = request.form.get("e_income")
         a_income = request.form.get("a_income")
         e_rent = request.form.get("e_rent")
@@ -175,9 +175,25 @@ def budget():
         # get current month and year
         currMonth = datetime.now().strftime("%Y-%m")
         
-        # check database to see if data for selected month exists
-        data = db.execute("SELECT * FROM 'budgets' WHERE user = :user AND month = :month", user=session["user_id"], month=currMonth)
-        if len(data) > 0:
+        data = budget_data(currMonth)
+        
+        return render_template("budget.html", username=username, currMonth=currMonth, e_income=data['e_income'], a_income=data['a_income'], e_rent=data['e_rent'], a_rent=data['a_rent'], e_util=data['e_util'], a_util=data['a_util'], e_food=data['e_food'], a_food=data['a_food'], e_ent=data['e_ent'], a_ent=data['a_ent'], e_save=data['e_save'], a_save=data['a_save'])
+    
+@app.route("/logout")
+def logout():
+    """Log user out."""
+
+    # forget any user_id
+    session.clear()
+
+    # redirect user to login form
+    flash("You have successfully been logged out.", "success")
+    return redirect(url_for("login"))
+
+def budget_data(month):
+    # check database to see if data for selected month exists
+    data = db.execute("SELECT * FROM 'budgets' WHERE user = :user AND month = :month", user=session["user_id"], month=month)
+    if len(data) > 0:
             # pull values from database
             e_income = data[0]["e_income"]
             a_income = data[0]["a_income"]
@@ -192,7 +208,7 @@ def budget():
             e_save = data[0]["e_save"]
             a_save = data[0]["a_save"]
             
-        else:
+    else:
             # set variables to None
             e_income = None
             a_income = None
@@ -206,16 +222,5 @@ def budget():
             a_ent = None
             e_save = None
             a_save = None
-        
-        return render_template("budget.html", username=username, currMonth=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save)
-    
-@app.route("/logout")
-def logout():
-    """Log user out."""
-
-    # forget any user_id
-    session.clear()
-
-    # redirect user to login form
-    flash("You have successfully been logged out.", "success")
-    return redirect(url_for("login"))
+            
+    return {'e_income': e_income, 'a_income': a_income, 'e_rent': e_rent, 'a_rent': a_rent, 'e_util': e_util, 'a_util': a_util, 'e_food': e_food, 'a_food': a_food, 'e_ent': e_ent, 'a_ent': a_ent, 'e_save': e_save, 'a_save': a_save}
