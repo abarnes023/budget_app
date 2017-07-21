@@ -51,7 +51,9 @@ def budget_data(month):
     return {'e_income': e_income, 'a_income': a_income, 'e_rent': e_rent, 'a_rent': a_rent, 'e_util': e_util, 'a_util': a_util, 'e_food': e_food, 'a_food': a_food, 'e_ent': e_ent, 'a_ent': a_ent, 'e_save': e_save, 'a_save': a_save}
 
 # set up for month_change function - add new fields
-
+class on_change_function(models.Model):
+    _inherit = 'product.template'
+    month = fields.Float('Month')
 
 # change input fields on budget.html when month is changed
 def month_change(self,cr,uid,ids,month,context=None):
