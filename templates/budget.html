@@ -89,6 +89,22 @@
                 <button class="btn btn-primary" type="submit">Save Budget</button>
             </div>
         </fieldset>
-        
     </form>
+    <div class="smiles">
+        <div class="rent">
+            <h4>Rent Spending</h4>
+            {% if rent < 0 %}
+                <span style="color:gray;">Enter actual income and rent</span>
+            {% elif rent >= 0 and rent < 25 %}
+                <span style="color:green;">&#9786;</span>
+            {% elif rent >= 25 and rent < 35 %}
+                <span style="color:yellow;">&#9863;</span>
+            {% elif rent >= 35 %}
+                <span style="color:red;">&#9785;</span>
+            {% endif %}
+        </div>
+        <div class="saved">
+            
+        </div>
+    </div>
 {% endblock %}

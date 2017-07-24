@@ -142,18 +142,18 @@ def budget():
         currMonth = request.form.get("month")
         
         # get variables from form
-        e_income = usd(request.form.get("e_income"))
-        a_income = usd(request.form.get("a_income"))
-        e_rent = usd(request.form.get("e_rent"))
-        a_rent = usd(request.form.get("a_rent"))
-        e_util = usd(request.form.get("e_util"))
-        a_util = usd(request.form.get("a_util"))
-        e_food = usd(request.form.get("e_food"))
-        a_food = usd(request.form.get("a_food"))
-        e_ent = usd(request.form.get("e_ent"))
-        a_ent = usd(request.form.get("a_ent"))
-        e_save = usd(request.form.get("e_save"))
-        a_save = usd(request.form.get("a_save"))
+        e_income = request.form.get("e_income")
+        a_income = request.form.get("a_income")
+        e_rent = request.form.get("e_rent")
+        a_rent = request.form.get("a_rent")
+        e_util = request.form.get("e_util")
+        a_util = request.form.get("a_util")
+        e_food = request.form.get("e_food")
+        a_food = request.form.get("a_food")
+        e_ent = request.form.get("e_ent")
+        a_ent = request.form.get("a_ent")
+        e_save = request.form.get("e_save")
+        a_save = request.form.get("a_save")
             
         # check database to see if data for selected month exists
         data = db.execute("SELECT * FROM 'budgets' WHERE user = :user AND month = :month", user=session["user_id"], month=currMonth)
@@ -167,17 +167,26 @@ def budget():
             db.execute("""INSERT INTO 'budgets'
                         (user, month, e_income, a_income, e_rent, a_rent, e_util, a_util, e_food, a_food, e_ent, a_ent, e_save, a_save) VALUES (:user, :month, :e_income, :a_income, :e_rent, :a_rent, :e_util, :a_util, :e_food, :a_food, :e_ent, :a_ent, :e_save, :a_save)""",
                         user=session["user_id"], month=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save)
-            
-        return render_template("budget.html", username=username, currMonth=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save)
+        
+        # check percent saved and spent on rent
+        rent = spending(a_rent, a_income)
+        saved = spending(a_save, a_income)
+        
+        return render_template("budget.html", username=username, currMonth=currMonth, e_income=usd(e_income), a_income=usd(a_income), e_rent=usd(e_rent), a_rent=usd(a_rent), e_util=usd(e_util), a_util=usd(a_util), e_food=usd(e_food), a_food=usd(a_food), e_ent=usd(e_ent), a_ent=usd(a_ent), e_save=usd(e_save), a_save=usd(a_save), rent=rent, saved=saved)
     
     # if reached via GET
     else:
         # get current month and year
         currMonth = datetime.now().strftime("%Y-%m")
         
+        # pull month's data from database
         data = budget_data(currMonth)
         
-        return render_template("budget.html", username=username, currMonth=currMonth, e_income=data['e_income'], a_income=data['a_income'], e_rent=data['e_rent'], a_rent=data['a_rent'], e_util=data['e_util'], a_util=data['a_util'], e_food=data['e_food'], a_food=data['a_food'], e_ent=data['e_ent'], a_ent=data['a_ent'], e_save=data['e_save'], a_save=data['a_save'])
+        # check percent saved and spent on rent
+        rent = spending(data['a_rent'], data['a_income'])
+        saved = spending(data['a_save'], data['a_income'])
+        
+        return render_template("budget.html", username=username, currMonth=currMonth, e_income=usd(data['e_income']), a_income=usd(data['a_income']), e_rent=usd(data['e_rent']), a_rent=usd(data['a_rent']), e_util=usd(data['e_util']), a_util=usd(data['a_util']), e_food=usd(data['e_food']), a_food=usd(data['a_food']), e_ent=usd(data['e_ent']), a_ent=usd(data['a_ent']), e_save=usd(data['e_save']), a_save=usd(data['a_save']), rent=rent, saved=saved)
     
 @app.route("/logout")
 def logout():

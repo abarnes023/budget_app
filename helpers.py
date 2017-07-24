@@ -49,6 +49,18 @@ def budget_data(month):
             
     return {'e_income': e_income, 'a_income': a_income, 'e_rent': e_rent, 'a_rent': a_rent, 'e_util': e_util, 'a_util': a_util, 'e_food': e_food, 'a_food': a_food, 'e_ent': e_ent, 'a_ent': a_ent, 'e_save': e_save, 'a_save': a_save}
 
-# Formats value as USD
+# Checks percent spending vs total income
+def spending(expense, income):
+    if not expense or not income:
+        percent = -1
+    else:
+        percent = (float(expense)/ float(income)) * 100
+    return percent
+
+# Formats value as USD if not None
 def usd(value):
-    return "${:,.2f}".format(value)
+    if not value:
+        return None
+    else:
+        value = float(value)
+        return "${:,.2f}".format(value)
