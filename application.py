@@ -4,6 +4,7 @@ from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 from datetime import datetime
+import feedparser
 from helpers import *
 
 # configure application
@@ -187,6 +188,14 @@ def budget():
         saved = spending(data['a_save'], data['a_income'])
         
         return render_template("budget.html", username=username, currMonth=currMonth, e_income=data['e_income'], a_income=data['a_income'], e_rent=data['e_rent'], a_rent=data['a_rent'], e_util=data['e_util'], a_util=data['a_util'], e_food=data['e_food'], a_food=data['a_food'], e_ent=data['e_ent'], a_ent=data['a_ent'], e_save=data['e_save'], a_save=data['a_save'], rent=rent, saved=saved)
+
+@app.route("/articles")
+def articles():
+    """Display last 10 articles from Get Rich Slowly blog"""
+    
+    feed = feedparser.parse("http://www.getrichslowly.org/blog/feed/")
+    
+    return render_template("articles.html", feed=feed)
     
 @app.route("/logout")
 def logout():
