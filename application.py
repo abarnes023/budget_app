@@ -154,11 +154,6 @@ def budget():
         a_ent = request.form.get("a_ent")
         e_save = request.form.get("e_save")
         a_save = request.form.get("a_save")
-        
-        # check if all values are >= 0
-        if e_income<0 or a_income<0 or e_rent<0 or a_rent<0 or e_util<0 or a_util<0 or e_food<0 or a_food<0 or e_ent<0 or a_ent<0 or e_save<0 or a_save<0:
-            flash("Values must be greater than 0", "error")
-            return redirect(url_for("budget"))
             
         # check database to see if data for selected month exists
         data = db.execute("SELECT * FROM 'budgets' WHERE user = :user AND month = :month", user=session["user_id"], month=currMonth)
