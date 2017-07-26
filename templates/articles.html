@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Articles
+{% endblock %}
+
+{% block main %}
+    {% for article in feed.entries %}
+        <h4><a href="{{ article.link }}">{{ article.title }}</a></h4>
+        <p>{{ article.description }}</p>
+    {% endfor %}
+{% endblock %}
