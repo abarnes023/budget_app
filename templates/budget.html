@@ -90,21 +90,46 @@
             </div>
         </fieldset>
     </form>
+    
+    
     <div class="smiles">
-        <div class="rent">
-            <h4>Rent Spending</h4>
-            {% if rent < 0 %}
-                <span style="color:gray;">Enter actual income and rent</span>
-            {% elif rent >= 0 and rent < 25 %}
-                <span style="color:green;">&#9786;</span>
-            {% elif rent >= 25 and rent < 35 %}
-                <span style="color:yellow;">&#9863;</span>
-            {% elif rent >= 35 %}
-                <span style="color:red;">&#9785;</span>
-            {% endif %}
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <h4>Rent Spending</h4>
+            </div>
+            <div class="col-sm-4">
+                <h4>Savings</h4>
+            </div>
         </div>
-        <div class="saved">
-            
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <div class="rent">
+                    {% if rent < 0 %}
+                        <span style="color:gray;">Enter actual income and rent</span>
+                    {% elif rent >= 0 and rent < 25 %}
+                        <span style="color:green;">&#9786; You're looking great!</span>
+                    {% elif rent >= 25 and rent < 35 %}
+                        <span style="color:#e1e509;">&#9863; Rent spending is okay</span>
+                    {% elif rent >= 35 %}
+                        <span style="color:red;">&#9785; Spending too much on rent</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="saved">
+                    {% if saved < 0 %}
+                        <span style="color:gray;">Enter actual income and savings</span>
+                    {% elif saved >= 0 and saved < 10 %}
+                        <span style="color:red;">&#9785; Cut back and save more</span>
+                    {% elif saved >= 10 and saved < 20 %}
+                        <span style="color:#e1e509;">&#9863; Consider saving a bit more</span>
+                    {% elif saved >= 20 %}
+                        <span style="color:green;">&#9786; Great job saving!</span>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
