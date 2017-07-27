@@ -5,30 +5,39 @@
 {% endblock %}
 
 {% block main %}
-    <div class="about">
+    <div class="headline">
         <div class="row">
-            <h2>Learn More About BudgetWise</h2>
-        </div>
-        <div class="row">
-            <a class="btn btn-primary" href="{{ url_for('about') }}" role="button">About Us</a>
+            <span><img src="https://media.glassdoor.com/sqll/541092/bw-shipping-pte-squarelogo.png" width="50" height="50"/></span>
+            <span class="h1">BudgetWise</span>
         </div>
     </div>
     
-    <div class="budgets">
-        <div class="row">
-            <h2>The Budgets Start Here</h2>
+    <div class="row">
+        <div class="about col-sm-4">
+            <div class="row">
+                <h3>Learn About BudgetWise</h3>
+            </div>
+            <div class="row">
+                <a class="btn btn-primary" href="{{ url_for('about') }}" role="button">About Us</a>
+            </div>
         </div>
-        <div class="row">
-            <a class="btn btn-primary" href="{{ url_for('budget') }}" role="button">Start Budgeting</a>
-        </div>
-    </div>
     
-    <div class="articles">
-        <div class="row">
-            <h2>Want to Get Rich Slowly?</h2>
+        <div class="budgets col-sm-4">
+            <div class="row">
+                <h3>The Budgets Start Here</h3>
+            </div>
+            <div class="row">
+                <a class="btn btn-primary" href="{{ url_for('budget') }}" role="button">Start Budgeting</a>
+            </div>
         </div>
-        <div class="row">
-            <a class="btn btn-primary" href="{{ url_for('articles') }}" role="button">Learn More</a>
+    
+        <div class="articles col-sm-4">
+            <div class="row">
+                <h3>Want to Get Rich Slowly?</h3>
+            </div>
+            <div class="row">
+                <a class="btn btn-primary" href="{{ url_for('articles') }}" role="button">Learn More</a>
+            </div>
         </div>
     </div>
 {% endblock %}
