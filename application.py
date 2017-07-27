@@ -140,6 +140,9 @@ def budget():
     if request.method == "POST":
         # set selected month
         currMonth = request.form.get("month")
+        if not currMonth:
+            flash("Must enter month")
+            return redirect(url_for("budget"))
         
         # get variables from form
         e_income = request.form.get("e_income")
@@ -187,6 +190,20 @@ def budget():
         saved = spending(data['a_save'], data['a_income'])
         
         return render_template("budget.html", username=username, currMonth=currMonth, e_income=data['e_income'], a_income=data['a_income'], e_rent=data['e_rent'], a_rent=data['a_rent'], e_util=data['e_util'], a_util=data['a_util'], e_food=data['e_food'], a_food=data['a_food'], e_ent=data['e_ent'], a_ent=data['a_ent'], e_save=data['e_save'], a_save=data['a_save'], rent=rent, saved=saved)
+
+@app.route("/month")
+def month():
+    """Pulls current month data when month is changed"""
+    
+    month = request.args.get("month")
+    if not month:
+        flash("Must enter month")
+        return redirect(url_for("budget"))
+    
+    # get budget data for month
+    data = budget_data(month)
+    
+    return jsonify(data)
 
 @app.route("/articles")
 def articles():
