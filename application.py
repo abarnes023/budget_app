@@ -1,6 +1,7 @@
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session, url_for
+from flask import Flask, flash, redirect, render_template, request, session, url_for, jsonify
 from flask_session import Session
+from flask_jsglue import JSGlue
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 from datetime import datetime
@@ -9,6 +10,7 @@ from helpers import *
 
 # configure application
 app = Flask(__name__)
+JSGlue(app)
 
 # ensure responses aren't cached
 if app.config["DEBUG"]:
