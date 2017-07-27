@@ -57,6 +57,12 @@ def spending(expense, income):
         percent = (float(expense)/ float(income)) * 100
     return percent
 
+# Gets the current username
+def get_user():
+    user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
+    username = user[0]["username"]
+    return username
+
 # Formats value as USD if not None
 def usd(value):
     if not value:

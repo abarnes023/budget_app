@@ -115,8 +115,7 @@ def login():
 def index():
     ### Displays user homepage. """
     
-    user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
-    username = user[0]["username"]
+    username = get_user()
     return render_template("index.html", username=username)
     
 @app.route("/about")
@@ -124,8 +123,7 @@ def index():
 def about():
     ### Display the about us page. """
     
-    user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
-    username = user[0]["username"]
+    username = get_user()
     return render_template("about.html", username=username)
     
 @app.route("/budget", methods=["GET", "POST"])
@@ -134,8 +132,7 @@ def budget():
     ### Allows user to create budget. """
     
     # get username
-    user = db.execute("SELECT username FROM 'users' WHERE id = :id", id=session["user_id"])
-    username = user[0]["username"]
+    username = get_user()
     
     # if reached via POST
     if request.method == "POST":
@@ -193,9 +190,13 @@ def budget():
 def articles():
     """Display last 10 articles from Get Rich Slowly blog"""
     
+    # Parse through RSS feed of Get Rich Slowly
     feed = feedparser.parse("http://www.getrichslowly.org/blog/feed/")
     
-    return render_template("articles.html", feed=feed)
+    # Get current username
+    username = get_user()
+    
+    return render_template("articles.html", username=username, feed=feed)
     
 @app.route("/logout")
 def logout():
