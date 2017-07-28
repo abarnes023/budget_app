@@ -1,8 +1,6 @@
 $(function() {
     $('a#set_month').bind('click', function() {
-        $.getJSON(Flask.url_for("month"), {
-            month: $('#month').val()
-        }, function(data) {
+        $.getJSON(Flask.url_for("month"), function(data) {
             $("#e_income").number(data.e_income),
             $("#a_income").number(data.a_income),
             $("#e_rent").number(data.e_rent),
@@ -17,5 +15,5 @@ $(function() {
             $("#a_save").number(data.a_save);
         });
         return false;
-    })
-})
+    });
+});

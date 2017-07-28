@@ -1,5 +1,6 @@
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session, url_for, jsonify
+from flask import Flask, flash, redirect, render_template, request, session, url_for
+import json
 from flask_session import Session
 from flask_jsglue import JSGlue
 from passlib.apps import custom_app_context as pwd_context
@@ -203,7 +204,7 @@ def month():
     # get budget data for month
     data = budget_data(month)
     
-    return jsonify(data)
+    return json.dumps(data)
 
 @app.route("/articles")
 def articles():
