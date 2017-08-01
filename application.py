@@ -196,7 +196,7 @@ def budget():
 def month():
     """Pulls current month data when month is changed"""
     
-    month = request.args.get("month")
+    month = request.form.get("month")
     if not month:
         flash("Must enter month")
         return redirect(url_for("budget"))
