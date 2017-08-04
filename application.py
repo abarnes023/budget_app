@@ -175,7 +175,7 @@ def budget():
         rent = spending(a_rent, a_income)
         saved = spending(a_save, a_income)
         
-        return render_template("budget.html", username=username, currMonth=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save, rent=rent, saved=saved)
+        return render_template("budget.html", username=username, monthTitle=currMonth, currMonth=currMonth, e_income=e_income, a_income=a_income, e_rent=e_rent, a_rent=a_rent, e_util=e_util, a_util=a_util, e_food=e_food, a_food=a_food, e_ent=e_ent, a_ent=a_ent, e_save=e_save, a_save=a_save, rent=rent, saved=saved)
     
     # if reached via GET
     else:
@@ -189,7 +189,7 @@ def budget():
         rent = spending(data['a_rent'], data['a_income'])
         saved = spending(data['a_save'], data['a_income'])
         
-        return render_template("budget.html", username=username, currMonth=currMonth, e_income=data['e_income'], a_income=data['a_income'], e_rent=data['e_rent'], a_rent=data['a_rent'], e_util=data['e_util'], a_util=data['a_util'], e_food=data['e_food'], a_food=data['a_food'], e_ent=data['e_ent'], a_ent=data['a_ent'], e_save=data['e_save'], a_save=data['a_save'], rent=rent, saved=saved)
+        return render_template("budget.html", username=username, monthTitle=currMonth, currMonth=currMonth, e_income=data['e_income'], a_income=data['a_income'], e_rent=data['e_rent'], a_rent=data['a_rent'], e_util=data['e_util'], a_util=data['a_util'], e_food=data['e_food'], a_food=data['a_food'], e_ent=data['e_ent'], a_ent=data['a_ent'], e_save=data['e_save'], a_save=data['a_save'], rent=rent, saved=saved)
 
 @app.route("/month")
 def month():

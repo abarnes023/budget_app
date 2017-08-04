@@ -3,6 +3,7 @@ $(function() {
         $.getJSON(Flask.url_for("month"), {
             month: $('input[name="month"]').val()
         }, function(data) {
+            document.getElementById("monthTitle").innerHTML = document.getElementById("month").value,
             document.getElementById("e_income").value = data.e_income,
             document.getElementById("a_income").value = data.a_income,
             document.getElementById("e_rent").value = data.e_rent,

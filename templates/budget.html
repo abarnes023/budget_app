@@ -8,11 +8,12 @@
     <form action="{{ url_for('budget') }}" method="post" class="form-horizontal">
         <fieldset>
             <h2>{{ username }}'s Budget</h2>
+            <h4 id="monthTitle">{{monthTitle}}</h4>
             <div class="form-group form-inline">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-7">
                     <label>Year-Month</label>
-                    <input class="form-control" type="month" value="{{ currMonth }}" id="month_picker" name="month" required>
+                    <input class="form-control" type="month" value="{{ currMonth }}" id="month" name="month" required>
                     <a href=# id="set_month" class="btn btn-primary" role="button">Set Month</a>
                 </div>
             </div>
