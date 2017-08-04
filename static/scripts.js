@@ -3,19 +3,18 @@ $(function() {
         $.getJSON(Flask.url_for("month"), {
             month: $('input[name="month"]').val()
         }, function(data) {
-            $("#e_income").number(data.e_income),
-            $("#a_income").number(data.a_income),
-            $("#e_rent").number(data.e_rent),
-            $("#a_rent").number(data.a_rent),
-            $("#e_util").number(data.e_util),
-            $("#a_util").number(data.a_util),
-            $("#e_food").number(data.e_food),
-            $("#a_food").number(data.a_food),
-            $("#e_ent").number(data.e_ent),
-            $("#a_ent").number(data.a_ent),
-            $("#e_save").number(data.e_save),
-            $("#a_save").number(data.a_save);
+            document.getElementById("e_income").value = data.e_income,
+            document.getElementById("a_income").value = data.a_income,
+            document.getElementById("e_rent").value = data.e_rent,
+            document.getElementById("a_rent").value = data.a_rent,
+            document.getElementById("e_util").value = data.e_util,
+            document.getElementById("a_util").value = data.a_util,
+            document.getElementById("e_food").value = data.e_food,
+            document.getElementById("a_food").value = data.a_food,
+            document.getElementById("e_ent").value = data.e_ent,
+            document.getElementById("a_ent").value = data.a_ent,
+            document.getElementById("e_save").value = data.e_save,
+            document.getElementById("a_save").value = data.a_save;
         });
-        return false;
     });
 });
