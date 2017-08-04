@@ -1,6 +1,5 @@
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session, url_for
-import json
+from flask import Flask, flash, redirect, render_template, request, session, url_for, json
 from flask_session import Session
 from flask_jsglue import JSGlue
 from passlib.apps import custom_app_context as pwd_context
@@ -201,7 +200,7 @@ def month():
         flash("Must enter month")
         return redirect(url_for("budget"))
     
-    # get budget data for month
+    # get budget data for month as a dictionary
     data = budget_data(month)
     
     return json.dumps(data)
