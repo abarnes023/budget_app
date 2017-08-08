@@ -13,7 +13,7 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-7">
                     <label>Year-Month</label>
-                    <input class="form-control" type="month" value="{{ currMonth }}" id="month" name="month" required>
+                    <input class="form-control" type="month" value="{{ currMonth }}" id="month" name="month" max="{{ monthMax }}" min="{{ monthMin }}" required>
                     <a href=# id="set_month" class="btn btn-primary" role="button">Set Month</a>
                 </div>
             </div>
