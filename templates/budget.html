@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" step="0.01" value="{{ a_income }}" placeholder="Enter actual income" id="a_income" name="a_income">
+                    <input class="form-control" type="number" min="0" step="0.01" value="{{ a_income }}" placeholder="Enter actual income" id="a_income" name="a_income" onchange="smileChange();">
                 </div>
             </div>
             
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ a_rent }}" step="0.01" placeholder="Enter actual rent" id="a_rent" name="a_rent">
+                    <input class="form-control" type="number" min="0" value="{{ a_rent }}" step="0.01" placeholder="Enter actual rent" id="a_rent" name="a_rent" onchange="smileChange();">
                 </div>
             </div>
             
@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ a_save }}" step="0.01" placeholder="Enter actual savings" id="a_save" name="a_save">
+                    <input class="form-control" type="number" min="0" value="{{ a_save }}" step="0.01" placeholder="Enter actual savings" id="a_save" name="a_save" onchange="smileChange();">
                 </div>
             </div>
             
@@ -111,7 +111,7 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">
-                <div class="rent">
+                <div id="rent">
                     {% if rent < 0 %}
                         <span style="color:gray;">Enter actual income and rent</span>
                     {% elif rent >= 0 and rent < 25 %}
@@ -124,7 +124,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="saved">
+                <div id="saved">
                     {% if saved < 0 %}
                         <span style="color:gray;">Enter actual income and savings</span>
                     {% elif saved >= 0 and saved < 10 %}
