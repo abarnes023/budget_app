@@ -6,21 +6,36 @@
 
 {% block main %}
 
+    <style type="text/css">
+        body
+        {
+            background: url("http://www.digitalplatforms.co.za/wp-content/uploads/2015/11/Website-Design-Background.png") no-repeat;
+            background-size: 100% 100%;
+            min-height: 100vh;
+        }
+    </style>
+
     <form action="{{ url_for('login') }}" method="post">
         <fieldset>
-            <h3>Welcome to BudgetWise!</h3>
+            <h3 class="white">Welcome to BudgetWise!</h3>
+            <h5 class="white">Please login below</h5>
             <br>
-            <div class="form-group">
-                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" required autofocus/>
+            <div class="form-group row">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-2">
+                    <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" required autofocus/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-2">
+                    <input class="form-control" name="password" placeholder="Password" type="password" required/>
+                </div>
             </div>
             <div class="form-group">
-                <input class="form-control" name="password" placeholder="Password" type="password" required/>
+                <button class="btn btn-primary" type="submit">Log In</button>
             </div>
-            <div class="form-group">
-                <button class="btn btn-default" type="submit">Log In</button>
-            </div>
-            <p>If you already have an account, please login above.</p>
-            <p>To create an account, you can <a href="{{ url_for('register') }}">register here</a>.</p>
+            <p class="white">If you already have an account, please login above.<br>To create an account, you can <a href="{{ url_for('register') }}">register here</a>.</p>
         </fieldset>
     </form>
     

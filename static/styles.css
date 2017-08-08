@@ -23,3 +23,32 @@
 {
     color: white;
 }
+
+.lgray
+{
+    background-color: LightGray;
+    border-radius: 15px;
+    padding: 20px;
+    height: 350px;
+}
+
+.about h3,
+.about p,
+.budgets h3,
+.budgets p,
+.articles h3,
+.articles p
+{
+    margin-bottom: 40px;
+}
+
+.headline
+{
+    margin: 30px;
+}
+
+.aboutUs
+{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
