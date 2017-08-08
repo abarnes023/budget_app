@@ -1,3 +1,6 @@
+
+// Update budget values when the month is changed
+
 $(function() {
     $('a#set_month').bind('click', function() {
         $.getJSON(Flask.url_for("month"), {
@@ -19,3 +22,18 @@ $(function() {
         });
     });
 });
+
+// Call smiles function when new month data loaded
+// Call smiles function when income, rent, or savings values changed
+
+
+
+// Calculate the percent an expense is of the income
+function smiles(expense, income) {
+    if(expense == null || income == null) {
+        return -1;
+    }
+    else {
+        return (parseFloat(expense))/ (parseFloat(income)) * 100;
+    }
+}
