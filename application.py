@@ -138,8 +138,8 @@ def budget():
     
     # get month and year of 3 years before and after today
     dt = datetime.now()
-    monthMin = dt.replace(year=dt.year-3).strftime("%Y-%m")
-    monthMax = dt.replace(year=dt.year+3).strftime("%Y-%m")
+    monthMin = dt.replace(year=dt.year-3).strftime("%m-%Y")
+    monthMax = dt.replace(year=dt.year+3).strftime("%m-%Y")
     
     # if reached via POST
     if request.method == "POST":
@@ -185,7 +185,7 @@ def budget():
     # if reached via GET
     else:
         # get current month and year
-        currMonth = datetime.now().strftime("%Y-%m")
+        currMonth = datetime.now().strftime("%m-%Y")
         
         # pull month's data from database
         data = budget_data(currMonth)
