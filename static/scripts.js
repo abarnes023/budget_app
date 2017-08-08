@@ -19,55 +19,59 @@ $(function() {
             document.getElementById("a_ent").value = data.a_ent,
             document.getElementById("e_save").value = data.e_save,
             document.getElementById("a_save").value = data.a_save;
+            smiles(data.a_rent, data.a_income, "rent");
+            smiles(data.a_save, data.a_income, "saved");
         });
     });
 });
 
-// Set variables
-var a_income = document.getElementById("a_income");
-var a_rent = document.getElementById("a_rent").value;
-var a_save = document.getElementById("a_save").value;
-var rent = document.getElementById("rent");
-var saved = document.getElementById("saved");
+// Call smileChange function when income, rent, or savings values changed
 
-// Call smiles function when income, rent, or savings values changed
-$("#a_income, #a_rent, #a_save").onchange = function smileChange() {
-    smiles(a_rent, a_income, rent);
-    smiles(a_save, a_income, saved);
-};
+$("#a_income, #a_rent, #a_save").onchange = smileChange();
 
+function smileChange() {
+    // Set variables
+    var a_income = document.getElementById("a_income").value;
+    var a_rent = document.getElementById("a_rent").value;
+    var a_save = document.getElementById("a_save").value;
+    
+    smiles(a_rent, a_income, "rent");
+    smiles(a_save, a_income, "saved");
+}
 
 // Calculate the percent an expense is of the income and update smile
+
 function smiles(expense, income, smile) {
-    // ensure budget values are not null
-    if (expense == null || income == null) {
-        $(smile).innerHTML = '<span style="color:gray;">Enter actual income and rent</span>';
-    }
-    
     // calculate spending percentage
     var percent = (parseFloat(expense))/ (parseFloat(income)) * 100;
     
     // set smiles based on spending percent
-    if (smile == rent) {
+    if (smile == "rent") {
         if (percent >= 0 && percent < 25) {
-            $(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> You\'re looking great!</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> You\'re looking great!</span>';
         }
         else if (percent >= 25 && percent < 35) {
-            $(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><span style="color:#e1e509;"> Rent spending is okay</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><span style="color:#e1e509;"> Rent spending is okay</span>';
         }
         else if (percent >= 35) {
-            $(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Spending too much on rent</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Spending too much on rent</span>';
+        }
+        else {
+            document.getElementById(smile).innerHTML = '<span style="color:gray;">Enter actual income and rent</span>';
         }
     }
-    else if (smile == saved) {
+    else if (smile == "saved") {
         if (percent >= 0 && percent < 10) {
-            $(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Cut back and save more</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Cut back and save more</span>';
         }
         else if (percent >= 10 && percent < 20) {
-            $(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><spanstyle="color:#e1e509;"> Consider saving a bit more</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><spanstyle="color:#e1e509;"> Consider saving a bit more</span>';
         }
         else if (percent >= 20) {
-            $(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> Great job saving!</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> Great job saving!</span>';
+        }
+        else {
+            document.getElementById(smile).innerHTML = '<span style="color:gray;">Enter actual income and rent</span>';
         }
     }
 }
