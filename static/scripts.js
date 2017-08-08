@@ -35,6 +35,9 @@ function smileChange() {
     var a_rent = document.getElementById("a_rent").value;
     var a_save = document.getElementById("a_save").value;
     
+    // Remind user to save
+    document.getElementById("reminder").innerHTML = "Don't forget to save your entries!";
+    
     smiles(a_rent, a_income, "rent");
     smiles(a_save, a_income, "saved");
 }
