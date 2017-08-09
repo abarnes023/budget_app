@@ -20,7 +20,7 @@
                 <label for="e_income" class="control-label col-sm-2">Income</label>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ e_income }}" step="0.01" placeholder="Enter expected income" id="e_income" name="e_income">
+                    <input class="form-control" type="number" min="0" value="{{ e_income }}" step="0.01" placeholder="Enter expected income" id="e_income" name="e_income" onchange="remind();">
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
@@ -32,7 +32,7 @@
                 <label for="e_rent" class="control-label col-sm-2">Rent</label>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ e_rent }}" step="0.01" placeholder="Enter expected rent" id="e_rent" name="e_rent">
+                    <input class="form-control" type="number" min="0" value="{{ e_rent }}" step="0.01" placeholder="Enter expected rent" id="e_rent" name="e_rent" onchange="remind();">
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
@@ -44,11 +44,11 @@
                 <label for="e_utilities" class="control-label col-sm-2">Utilities</label>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ e_util }}" step="0.01" placeholder="Enter expected utilities" id="e_util" name="e_util">
+                    <input class="form-control" type="number" min="0" value="{{ e_util }}" step="0.01" placeholder="Enter expected utilities" id="e_util" name="e_util" onchange="remind();">
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ a_util }}" step="0.01" placeholder="Enter actual utilities" id="a_util" name="a_util">
+                    <input class="form-control" type="number" min="0" value="{{ a_util }}" step="0.01" placeholder="Enter actual utilities" id="a_util" name="a_util" onchange="remind();">
                 </div>
             </div>
             
@@ -56,11 +56,11 @@
                 <label for="e_food" class="control-label col-sm-2">Food/ Groceries</label>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ e_food }}" step="0.01" placeholder="Enter expected food" id="e_food" name="e_food">
+                    <input class="form-control" type="number" min="0" value="{{ e_food }}" step="0.01" placeholder="Enter expected food" id="e_food" name="e_food" onchange="remind();">
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ a_food }}" step="0.01" placeholder="Enter actual food" id="a_food" name="a_food">
+                    <input class="form-control" type="number" min="0" value="{{ a_food }}" step="0.01" placeholder="Enter actual food" id="a_food" name="a_food" onchange="remind();">
                 </div>
             </div>
             
@@ -68,11 +68,11 @@
                 <label for="e_ent" class="control-label col-sm-2">Entertainment</label>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ e_ent }}" step="0.01" placeholder="Enter expected entertainment" id="e_ent" name="e_ent">
+                    <input class="form-control" type="number" min="0" value="{{ e_ent }}" step="0.01" placeholder="Enter expected entertainment" id="e_ent" name="e_ent" onchange="remind();">
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ a_ent }}" step="0.01" placeholder="Enter actual entertainment" id="a_ent" name="a_ent">
+                    <input class="form-control" type="number" min="0" value="{{ a_ent }}" step="0.01" placeholder="Enter actual entertainment" id="a_ent" name="a_ent" onchange="remind();">
                 </div>
             </div>
             
@@ -80,7 +80,7 @@
                 <label for="e_save" class="control-label col-sm-2">Savings</label>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
-                    <input class="form-control" type="number" min="0" value="{{ e_save }}" step="0.01" placeholder="Enter expected savings" id="e_save" name="e_save">
+                    <input class="form-control" type="number" min="0" value="{{ e_save }}" step="0.01" placeholder="Enter expected savings" id="e_save" name="e_save" onchange="remind();">
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
@@ -89,7 +89,7 @@
             </div>
             
             <div class="form-group">
-                <div id="reminder" style="color:red;"></div>
+                <div id="reminder" style="color:red; margin-bottom: 20px;"></div>
                 <button class="btn btn-primary" type="submit" id="save">Save Budget</button>
             </div>
         </fieldset>

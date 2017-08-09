@@ -99,3 +99,11 @@ function smiles(expense, income, smile) {
         }
     }
 }
+
+// Remind user to save changes to budget
+
+$("#e_income, #e_rent, #a_util, #e_util, #a_food, #e_food, #a_ent, #e_ent, #e_save").onchange = remind();
+
+function remind() {
+    document.getElementById("reminder").innerHTML = "Don't forget to save your entries!";
+}
