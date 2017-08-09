@@ -68,7 +68,7 @@ function smiles(expense, income, smile) {
             document.getElementById(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Cut back and save more</span>';
         }
         else if (percent >= 10 && percent < 20) {
-            document.getElementById(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><spanstyle="color:#e1e509;"> Consider saving a bit more</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><span style="color:#e1e509;"> Consider saving a bit more</span>';
         }
         else if (percent >= 20) {
             document.getElementById(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> Great job saving!</span>';
