@@ -25,10 +25,14 @@ $(function() {
             });
         }
         else {
-            document.getElementById("monthError").innerHTML = "Please enter a valid month in the format YYYY-MM";
+            document.getElementById("monthError").innerHTML = "Please enter a valid month in the format YYYY-MM between 2010-01 to 2029-12";
         }
     });
 });
+
+// Disable save budget button on budget.html page if date invalid
+
+
 
 // Check if month is valid (within 2010-2029)
 
