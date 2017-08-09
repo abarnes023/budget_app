@@ -68,34 +68,36 @@ function smileChange() {
 function smiles(expense, income, smile) {
     // calculate spending percentage
     var percent = (parseFloat(expense))/ (parseFloat(income)) * 100;
+    var rangesRent = "<br>Good: Less than 25% of income<br>Okay: 25-35% of income<br>Bad: More than 35% of income";
+    var rangesSaved = "<br>Good: More than 20% of income<br>Okay: 10-20% of income<br>Bad: Less than 10% of income";
     
     // set smiles based on spending percent
     if (smile == "rent") {
         if (percent >= 0 && percent < 25) {
-            document.getElementById(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> You\'re looking great!</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> You\'re looking great!' + rangesRent + '</span>';
         }
         else if (percent >= 25 && percent < 35) {
-            document.getElementById(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><span style="color:#e1e509;"> Rent spending is okay</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><span style="color:#e1e509;"> Rent spending is okay' + rangesRent + '</span>';
         }
         else if (percent >= 35) {
-            document.getElementById(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Spending too much on rent</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Spending too much on rent' + rangesRent + '</span>';
         }
         else {
-            document.getElementById(smile).innerHTML = '<span style="color:gray;">Enter actual income and rent</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:gray;">Enter actual income and rent' + rangesRent + '</span>';
         }
     }
     else if (smile == "saved") {
         if (percent >= 0 && percent < 10) {
-            document.getElementById(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Cut back and save more</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:red; font-size: 20px">&#9785;</span><span style="color:red;"> Cut back and save more' + rangesSaved + '</span>';
         }
         else if (percent >= 10 && percent < 20) {
-            document.getElementById(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><span style="color:#e1e509;"> Consider saving a bit more</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:#e1e509; font-size: 20px">&#9863;</span><span style="color:#e1e509;"> Consider saving a bit more' + rangesSaved + '</span>';
         }
         else if (percent >= 20) {
-            document.getElementById(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> Great job saving!</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:green; font-size: 20px">&#9786;</span><span style="color:green;"> Great job saving!' + rangesSaved + '</span>';
         }
         else {
-            document.getElementById(smile).innerHTML = '<span style="color:gray;">Enter actual income and rent</span>';
+            document.getElementById(smile).innerHTML = '<span style="color:gray;">Enter actual income and rent' + rangesSaved + '</span>';
         }
     }
 }
