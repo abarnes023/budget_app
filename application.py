@@ -146,7 +146,6 @@ def budget():
         # set selected month
         currMonth = request.form.get("month")
         if not currMonth:
-            flash("Must enter month")
             return redirect(url_for("budget"))
         
         # get variables from form
