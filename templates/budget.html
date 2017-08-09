@@ -10,12 +10,8 @@
             <h2>{{ username }}'s Budget</h2>
             <h4 id="monthTitle">{{monthTitle}}</h4>
             <div class="form-group form-inline">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-7">
-                    <label>Year-Month</label>
-                    <input class="form-control" type="month" value="{{ currMonth }}" id="month" name="month" max="{{ monthMax }}" min="{{ monthMin }}" required>
-                    <a href=# id="set_month" class="btn btn-primary" role="button">Set Month</a>
-                </div>
+                <label>Year-Month</label>
+                <input class="form-control" type="month" value="{{ currMonth }}" id="month" name="month" max="{{ monthMax }}" min="{{ monthMin }}" onchange="setMonth();" required>
             </div>
             <div id="monthError" style="color: red; margin-bottom: 20px;"></div>
         </fieldset>
