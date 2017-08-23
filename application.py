@@ -209,7 +209,7 @@ def month():
 
 @app.route("/articles")
 def articles():
-    """Display last 10 articles from Get Rich Slowly blog"""
+    """Display latest articles from Get Rich Slowly blog"""
     
     # Parse through RSS feed of Get Rich Slowly
     feed = feedparser.parse("http://www.getrichslowly.org/blog/feed/")
